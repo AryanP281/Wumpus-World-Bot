@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wumpus World Bot - Play Game</title>
+
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+    </head>
+
+    <body>
+        {% for row in range(0, rows) %}
+            {% for col in range(0, cols) %}
+                {% if (row, col) == player_path[-1] %}
+                    <img src="../static/resources/CharacterTile.png" width="5%" height="5%">
+                {% elif (row, col) in player_path %}
+                    <img src="../static/resources/EmptyTile.png" width="5%" height="5%">
+                {% else %}
+                    <img src="../static/resources/Fog.png" width="5%" height="5%">
+                {% endif %}
+            {% endfor %}
+            <br>
+        {% endfor %}
+
+        {% for i in range(0,2) %}
+            <br>
+        {% endfor %}
+
+        <h1>You experience in room : </h1>
+        <ol>
+            {% for condition in room_conditions %}
+                <li>{{ condition }}</li>
+            {% endfor %}
+        </ol>
+
+        {% for i in range(0,2) %}
+            <br>
+        {% endfor %}
+
+        <form action="" method="POST">
+            <button type="submit" name="up">Move Up</button>
+            <button type="submit" name="down">Move Down</button>
+            <button type="submit" name="left">Move Left</button>
+            <button type="submit" name="right">Move Right</button>
+        </form>
+
+    </body>
+
+</html>

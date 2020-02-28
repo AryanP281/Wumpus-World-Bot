@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wumpus World Bot - Game Map</title>
+    </head>
+    <body>
+        {% for row in map %}
+            {% for col in row %}
+            {% if col == 0 %}
+                <img src="../static/resources/EmptyTile.png" width="5%" height="5%">
+            {% elif col == 1 %}
+                <img src="../static/resources/PitTile.png" width="5%" height="5%">
+            {% elif col == 2 %}
+                <img src="../static/resources/WumpusTile.png" width="5%" height="5%">
+            {% elif col == 3 %}
+                <img src="../static/resources/GoldTile.png" width="5%" height="5%">
+            {% endif %}
+            {% endfor %}
+            <br>
+        {% endfor %}
+    </body>
+</html>

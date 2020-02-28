@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Wumpus World Bot</title>
+
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+    </head>
+    <body>
+        {% for row in cave %}
+            {% for col in row %}
+            {% if col == 0 %}
+                <img src="../static/resources/Fog.png" width="5%" height="5%">
+            {% elif col == 1 %}
+                <img src="../static/resources/EmptyTile.png" width="5%" height="5%">
+            {% elif col == 2 %}
+                <img src="../static/resources/CharacterTile.png" width="5%" height="5%">
+            {% endif %}
+            {% endfor %}
+            <br>
+        {% endfor %}
+
+        {% for i in range(0,2) %}
+            <br>
+        {% endfor %}
+
+        <h1>Bot experiences in room : </h1>
+        <ol>
+            {% for condition in room_conditions %}
+                <li>{{ condition }}</li>
+            {% endfor %}
+        </ol>
+
+        {% for i in range(0,2) %}
+            <br>
+        {% endfor %}
+
+        <form action="" method="POST">
+            <button type="submit">Next Move</button> 
+        </form>
+
+        <br>
+        {% if game_end == 0 %}
+            <em>The bot traversed {{ paths_traversed }} paths. This is the path that lead it to gold</em>
+        {% elif game_end == 1 %}
+            <em>The bot traversed {{ paths_traversed }} paths. It fell into a pit while traversing this path</em>
+        {% elif game_end == 2 %}
+            <em>The bot traversed {{ paths_traversed }} paths. It was killed by the Wumpus while traversing this path</em>
+        {% endif %}
+
+        <br><br>
+        <a href="{{ url_for('display_map') }}">View Cave Map</a>
+    </body>
+</html>
